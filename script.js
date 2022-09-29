@@ -24,9 +24,6 @@ function getDigitNum(){
   }
   return digitNum;
 }
-// Confirm digit prompt is working
-// var digitNum = getDigitNum();
-// console.log(digitNum);
 
 // Confirm lowercase letters
 function getLowerCase(){
@@ -45,14 +42,6 @@ function getSpecialCharacters(){
   return specialCharacters;
 }
 
-// Confirm letter prompt is working
-// var lowerCase = getLowerCase();
-// console.log(lowerCase);
-// var upperCase = getUpperCase();
-// console.log(upperCase);
-// var specialCharacters = getSpecialCharacters();
-// console.log(specialCharacters);
-
 // Generate password
 
 // Determine password length
@@ -62,6 +51,8 @@ var passwordLength = getDigitNum();
 var lowerCase =getLowerCase();
 var upperCase =getUpperCase();
 var specialCharacters =getSpecialCharacters();
+
+console.log(lowerCase, upperCase, specialCharacters)
 
 // Define Random Seed function
 
@@ -86,9 +77,23 @@ console.log(randomCharacter);
 
 // Determine type of character to be used
 
+// Choose character sets to pull from
 function characterArray(){
-  var characterType = new Array ()
+  var characterType = new Array ();
+  if (lowerCase === true){
+    characterType.push(lowercaseLettersSet);
+  }
+  if (upperCase === true){
+    characterType.push(uppercaseLettersSet);
+  }
+  if (specialCharacters === true){
+    characterType.push(specialCharactersSet);
+  }
+  return characterType
 }
+
+var characterType = characterArray();
+console.log(characterType);
 
 function chooseCharacter(){
 }
