@@ -89,7 +89,8 @@ function characterArray(){
   if (specialCharacters === true){
     characterType.push(specialCharactersSet);
   }
-  return characterType
+  var characterTypeArray = characterType.flat();
+  return characterTypeArray
 }
 
 var characterType = characterArray();
