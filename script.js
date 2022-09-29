@@ -12,10 +12,14 @@ console.log(randomSeed);
 // var uppercase = confirm("Would you like to use uppercase letters in addition to lowercase?\nOK=Yes Cancel=NO");
 // var numbers = confirm("Would you like to use numbers?\nOK=Yes Cancel=No");
 
-// Prompt number of digits
+// Prompt # of digits
 // Confirm # of digits is between 8 and 128
 function getDigitNum(){
   var digitNum = prompt("Please indicate the number of digits for your password (8-128)", "Please input a number between 8 and 128");
+  while (!(digitNum >= 8 && digitNum <= 128)) {
+    alert ("Invalid number of digits, please choose a number between 8 and 128.")
+    digitNum = prompt("Please indicate the number of digits for your password (8-128)", "Please input a number between 8 and 128");
+  }
   return digitNum;
 }
 // Confirm digit prompt is working
