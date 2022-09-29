@@ -4,13 +4,14 @@ var generateBtn = document.querySelector("#generate");
 // Generate random seed
 var randomSeed =Math.floor(Math.random() * 100);
 
-console.log(randomSeed);
+// Establish definition of numbers, letters, and special characters
+
+var numberSet = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
+var uppercaseLettersSet = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' ];
+var lowercaseLettersSet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var specialCharactersSet = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+' ];
 
 // Prompt password criteria
-
-// var specialCharacters = confirm("Would you like to use special characters?\nOK=Yes Cancel=No");
-// var uppercase = confirm("Would you like to use uppercase letters in addition to lowercase?\nOK=Yes Cancel=NO");
-// var numbers = confirm("Would you like to use numbers?\nOK=Yes Cancel=No");
 
 // Prompt # of digits
 // Confirm # of digits is between 8 and 128
@@ -23,11 +24,33 @@ function getDigitNum(){
   return digitNum;
 }
 // Confirm digit prompt is working
-var digitNum = getDigitNum()
-console.log(digitNum)
+var digitNum = getDigitNum();
+console.log(digitNum);
 
+// Confirm lowercase letters
+function getLowerCase(){
+  var lowerCase = confirm("Would you like to use lowercase letters?\nOK=Yes Cancel=No");
+  return lowerCase;
+}
 
+// Confirm uppercase letters
+function getUpperCase(){
+  var upperCase = confirm("Would you like to use UPPERCASE letters?\nOK=Yes Cancel=No");
+  return upperCase;
+}
+// Confirm special characters
+function getSpecialCharacters(){
+  var specialCharacters = confirm("Would you like to use special characters?\nOK=Yes Cancel=No");
+  return specialCharacters;
+}
 
+// Confirm letter prompt is working
+var lowerCase = getLowerCase();
+console.log(lowerCase);
+var upperCase = getUpperCase();
+console.log(upperCase);
+var specialCharacters = getSpecialCharacters();
+console.log(specialCharacters);
 
 // Write password to the #password input
 function writePassword() {
