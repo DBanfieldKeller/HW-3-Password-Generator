@@ -15,6 +15,7 @@ var specialCharactersSet = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-
 
 // Prompt # of digits
 // Confirm # of digits is between 8 and 128
+// TODO: Nest in while loop
 function getDigitNum(){
   var digitNum = prompt("Please indicate the number of digits for your password (8-128)", "Please input a number between 8 and 128");
   while (!(digitNum >= 8 && digitNum <= 128)) {
@@ -24,8 +25,8 @@ function getDigitNum(){
   return digitNum;
 }
 // Confirm digit prompt is working
-var digitNum = getDigitNum();
-console.log(digitNum);
+// var digitNum = getDigitNum();
+// console.log(digitNum);
 
 // Confirm lowercase letters
 function getLowerCase(){
@@ -69,12 +70,25 @@ function getRandomSeed(array){
   return randomSeed;
 }
 
+//Define function for character selection
+
+function getRandomCharacter(array, newSeed){
+  var randomCharacter = array[newSeed];
+  return randomCharacter
+}
+
 var arrayLength = uppercaseLettersSet.length
 console.log(arrayLength);
 var randomSeed = getRandomSeed(uppercaseLettersSet);
 console.log(randomSeed)
+var randomCharacter = getRandomCharacter(uppercaseLettersSet, randomSeed);
+console.log(randomCharacter);
 
 // Determine type of character to be used
+
+function characterArray(){
+  var characterType = new Array ()
+}
 
 function chooseCharacter(){
 }
