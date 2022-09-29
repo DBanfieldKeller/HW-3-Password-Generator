@@ -2,7 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 
 // Generate random seed
-var randomSeed =Math.floor(Math.random() * 100);
+// var randomSeed =Math.floor(Math.random() * 100);
 
 // Establish definition of numbers, letters, and special characters
 
@@ -45,12 +45,43 @@ function getSpecialCharacters(){
 }
 
 // Confirm letter prompt is working
-var lowerCase = getLowerCase();
-console.log(lowerCase);
-var upperCase = getUpperCase();
-console.log(upperCase);
-var specialCharacters = getSpecialCharacters();
-console.log(specialCharacters);
+// var lowerCase = getLowerCase();
+// console.log(lowerCase);
+// var upperCase = getUpperCase();
+// console.log(upperCase);
+// var specialCharacters = getSpecialCharacters();
+// console.log(specialCharacters);
+
+// Generate password
+
+// Determine password length
+var passwordLength = getDigitNum();
+
+// Determine character use
+var lowerCase =getLowerCase();
+var upperCase =getUpperCase();
+var specialCharacters =getSpecialCharacters();
+
+// Define Random Seed function
+
+function getRandomSeed(array){
+  var randomSeed = Math.floor(Math.random() * array.length );
+  return randomSeed;
+}
+
+var arrayLength = uppercaseLettersSet.length
+console.log(arrayLength);
+var randomSeed = getRandomSeed(uppercaseLettersSet);
+console.log(randomSeed)
+
+// Determine type of character to be used
+
+function chooseCharacter(){
+}
+
+function generatePassword(){
+
+}
 
 // Write password to the #password input
 function writePassword() {
