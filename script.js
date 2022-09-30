@@ -1,9 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Generate random seed
-// var randomSeed =Math.floor(Math.random() * 100);
-
 // Establish definition of numbers, letters, and special characters
 
 var numberSet = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
@@ -15,7 +12,7 @@ var specialCharactersSet = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-
 
 // Prompt # of digits
 // Confirm # of digits is between 8 and 128
-// TODO: Nest in while loop
+
 function getDigitNum(){
   var digitNum = prompt("Please indicate the number of digits for your password (8-128)", "Please input a number between 8 and 128");
   while (!(digitNum >= 8 && digitNum <= 128)) {
@@ -56,49 +53,44 @@ function getSpecialCharacters(){
 var passwordLength = getDigitNum();
 
 // Determine characters in use
-var lowerCase =getLowerCase();
-var upperCase =getUpperCase();
-var useNumbers =getNumbers();
-var specialCharacters =getSpecialCharacters();
-
-console.log(lowerCase, upperCase, useNumbers, specialCharacters)
-
-//Define function for character selection
-
-function getRandomCharacter(array, newSeed){
-  var randomCharacter = array[newSeed];
-  return randomCharacter
+function validCharacterSet(){
+  var lowerCase =getLowerCase();
+  var upperCase =getUpperCase();
+  var useNumbers =getNumbers();
+  var specialCharacters =getSpecialCharacters();
+  while( lowerCase === false && upperCase === false && useNumbers === false && specialCharacters === false) {
+    alert("Please choose at least one character set to use.")
+    var lowerCase =getLowerCase();
+    var upperCase =getUpperCase();
+    var useNumbers =getNumbers();
+    var specialCharacters =getSpecialCharacters();
+  }
+  return [lowerCase, upperCase, useNumbers, specialCharacters]
 }
 
-// var arrayLength = uppercaseLettersSet.length
-// console.log(arrayLength);
-// var randomSeed = getRandomSeed(uppercaseLettersSet);
-// console.log(randomSeed)
-// var randomCharacter = getRandomCharacter(uppercaseLettersSet, randomSeed);
-// console.log(randomCharacter);
+//Create variable based on array of values
+var validCharacters = validCharacterSet();
 
 // Choose character sets to pull from and combine into one array
 
 function characterArray(){
   var characterType = new Array ();
-  if (lowerCase === true){
+  if (validCharacters[0] === true){
     characterType.push(lowercaseLettersSet);
   }
-  if (upperCase === true){
+  if (validCharacters[1] === true){
     characterType.push(uppercaseLettersSet);
   }
-  if (useNumbers === true){
+  if (validCharacters[2] === true){
     characterType.push(numberSet);
   }
-  if (specialCharacters === true){
+  if (validCharacters[3] === true){
     characterType.push(specialCharactersSet);
   }
   var characterTypeArray = characterType.flat();
   return characterTypeArray
 }
 var validCharacterArray = characterArray();
-
-console.log(validCharacterArray);
 
 // Define Random Seed function
 
@@ -107,14 +99,14 @@ function getRandomSeed(Array){
   return randomSeed;
 }
 
-// var randomSeed = getRandomSeed(validCharacterArray);
+// Generate password
 
 function generatePassword(){
   var passwordArray = new Array();
-  for (let i = 0; i <= passwordLength; i++){
+  for (let i = 0; i < passwordLength; i++){
     passwordArray.push(validCharacterArray[getRandomSeed(validCharacterArray)]);
   }
-  var password= passwordArray.join("");
+  var password = passwordArray.join("");
   return password
 }
 
