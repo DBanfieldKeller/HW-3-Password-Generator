@@ -36,6 +36,14 @@ function getUpperCase(){
   var upperCase = confirm("Would you like to use UPPERCASE letters?\nOK=Yes Cancel=No");
   return upperCase;
 }
+
+// Confirm numbers 
+
+function getNumbers(){
+  var useNumbers = confirm("Would you like to use numbers?\n OK=Yes Cancel=No");
+  return useNumbers
+}
+
 // Confirm special characters
 function getSpecialCharacters(){
   var specialCharacters = confirm("Would you like to use special characters?\nOK=Yes Cancel=No");
@@ -47,19 +55,13 @@ function getSpecialCharacters(){
 // Determine password length
 var passwordLength = getDigitNum();
 
-// Determine character use
+// Determine characters in use
 var lowerCase =getLowerCase();
 var upperCase =getUpperCase();
+var useNumbers =getNumbers();
 var specialCharacters =getSpecialCharacters();
 
-console.log(lowerCase, upperCase, specialCharacters)
-
-// Define Random Seed function
-
-function getRandomSeed(array){
-  var randomSeed = Math.floor(Math.random() * array.length );
-  return randomSeed;
-}
+console.log(lowerCase, upperCase, useNumbers, specialCharacters)
 
 //Define function for character selection
 
@@ -68,16 +70,15 @@ function getRandomCharacter(array, newSeed){
   return randomCharacter
 }
 
-var arrayLength = uppercaseLettersSet.length
-console.log(arrayLength);
-var randomSeed = getRandomSeed(uppercaseLettersSet);
-console.log(randomSeed)
-var randomCharacter = getRandomCharacter(uppercaseLettersSet, randomSeed);
-console.log(randomCharacter);
+// var arrayLength = uppercaseLettersSet.length
+// console.log(arrayLength);
+// var randomSeed = getRandomSeed(uppercaseLettersSet);
+// console.log(randomSeed)
+// var randomCharacter = getRandomCharacter(uppercaseLettersSet, randomSeed);
+// console.log(randomCharacter);
 
-// Determine type of character to be used
+// Choose character sets to pull from and combine into one array
 
-// Choose character sets to pull from
 function characterArray(){
   var characterType = new Array ();
   if (lowerCase === true){
@@ -86,22 +87,39 @@ function characterArray(){
   if (upperCase === true){
     characterType.push(uppercaseLettersSet);
   }
+  if (useNumbers === true){
+    characterType.push(numberSet);
+  }
   if (specialCharacters === true){
     characterType.push(specialCharactersSet);
   }
   var characterTypeArray = characterType.flat();
   return characterTypeArray
 }
+var validCharacterArray = characterArray();
 
-var characterType = characterArray();
-console.log(characterType);
+console.log(validCharacterArray);
 
-function chooseCharacter(){
+// Define Random Seed function
+
+function getRandomSeed(Array){
+  var randomSeed = Math.floor(Math.random() *Array.length);
+  return randomSeed;
 }
+
+// var randomSeed = getRandomSeed(validCharacterArray);
 
 function generatePassword(){
-
+  var passwordArray = new Array();
+  for (let i = 0; i <= passwordLength; i++){
+    passwordArray.push(validCharacterArray[getRandomSeed(validCharacterArray)]);
+  }
+  var password= passwordArray.join("");
+  return password
 }
+
+var password = generatePassword();
+console.log(password);
 
 // Write password to the #password input
 function writePassword() {
