@@ -110,9 +110,6 @@ function generatePassword(){
   return password
 }
 
-var password = generatePassword();
-console.log(password);
-
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
